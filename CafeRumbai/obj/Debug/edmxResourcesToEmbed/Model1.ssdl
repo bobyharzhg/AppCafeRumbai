@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CafeRumbaiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="keranjang">
+    <Key>
+      <PropertyRef Name="IdKeranjang" />
+    </Key>
+    <Property Name="IdKeranjang" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdMinuman" Type="int" />
+    <Property Name="namaMinuman" Type="nvarchar" MaxLength="50" />
+    <Property Name="ukuranMinuman" Type="nvarchar" MaxLength="50" />
+    <Property Name="topping" Type="nvarchar" MaxLength="50" />
+    <Property Name="jumlahMinuman" Type="nvarchar" MaxLength="50" />
+    <Property Name="hargaMinuman" Type="int" />
+  </EntityType>
+  <EntityType Name="minuman">
+    <Key>
+      <PropertyRef Name="IdMinuman" />
+    </Key>
+    <Property Name="IdMinuman" Type="int" Nullable="false" />
+    <Property Name="NamaMinuman" Type="nvarchar" MaxLength="50" />
+    <Property Name="HargaMinuman" Type="int" />
+  </EntityType>
+  <EntityType Name="tblLogin">
+    <Key>
+      <PropertyRef Name="IdUser" />
+    </Key>
+    <Property Name="IdUser" Type="int" Nullable="false" />
+    <Property Name="Username" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ukuran">
+    <Key>
+      <PropertyRef Name="IdUkuran" />
+    </Key>
+    <Property Name="IdUkuran" Type="int" Nullable="false" />
+    <Property Name="Ukuran" Type="nvarchar" MaxLength="50" />
+    <Property Name="HargaUkuran" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_keranjang_ToMinuman">
+    <End Role="minuman" Type="Self.minuman" Multiplicity="0..1" />
+    <End Role="keranjang" Type="Self.keranjang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="minuman">
+        <PropertyRef Name="IdMinuman" />
+      </Principal>
+      <Dependent Role="keranjang">
+        <PropertyRef Name="IdMinuman" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CafeRumbaiModelStoreContainer">
+    <EntitySet Name="keranjang" EntityType="Self.keranjang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="minuman" EntityType="Self.minuman" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblLogin" EntityType="Self.tblLogin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ukuran" EntityType="Self.ukuran" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_keranjang_ToMinuman" Association="Self.FK_keranjang_ToMinuman">
+      <End Role="minuman" EntitySet="minuman" />
+      <End Role="keranjang" EntitySet="keranjang" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

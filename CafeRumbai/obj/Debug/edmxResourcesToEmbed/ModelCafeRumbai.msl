@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CafeRumbaiModelStoreContainer" CdmEntityContainer="CafeRumbaiEntities1">
+    <EntitySetMapping Name="keranjangs">
+      <EntityTypeMapping TypeName="CafeRumbaiModel.keranjang">
+        <MappingFragment StoreEntitySet="keranjang">
+          <ScalarProperty Name="IdKeranjang" ColumnName="IdKeranjang" />
+          <ScalarProperty Name="IdMinuman" ColumnName="IdMinuman" />
+          <ScalarProperty Name="namaMinuman" ColumnName="namaMinuman" />
+          <ScalarProperty Name="ukuranMinuman" ColumnName="ukuranMinuman" />
+          <ScalarProperty Name="topping" ColumnName="topping" />
+          <ScalarProperty Name="jumlahMinuman" ColumnName="jumlahMinuman" />
+          <ScalarProperty Name="hargaMinuman" ColumnName="hargaMinuman" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="minumen">
+      <EntityTypeMapping TypeName="CafeRumbaiModel.minuman">
+        <MappingFragment StoreEntitySet="minuman">
+          <ScalarProperty Name="IdMinuman" ColumnName="IdMinuman" />
+          <ScalarProperty Name="NamaMinuman" ColumnName="NamaMinuman" />
+          <ScalarProperty Name="HargaMinuman" ColumnName="HargaMinuman" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblLogins">
+      <EntityTypeMapping TypeName="CafeRumbaiModel.tblLogin">
+        <MappingFragment StoreEntitySet="tblLogin">
+          <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ukurans">
+      <EntityTypeMapping TypeName="CafeRumbaiModel.ukuran">
+        <MappingFragment StoreEntitySet="ukuran">
+          <ScalarProperty Name="IdUkuran" ColumnName="IdUkuran" />
+          <ScalarProperty Name="Ukuran1" ColumnName="Ukuran" />
+          <ScalarProperty Name="HargaUkuran" ColumnName="HargaUkuran" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

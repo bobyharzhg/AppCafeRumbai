@@ -1,0 +1,164 @@
+﻿<Window x:Class="CafeRumbai.MenuPemesanan"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CafeRumbai"
+        mc:Ignorable="d"
+        Title="MenuPemesanan" Height="450" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Window.Resources>
+        <Style TargetType="TextBox" x:Key="Textbox1">
+            <Setter Property="Padding" Value="7"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Foreground" Value="#000"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="MinHeight" Value="20"/>
+            <Setter Property="MinWidth" Value="250"/>
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Border x:Name="border" CornerRadius="10" BorderBrush="#000" Background="#EFEFEF">
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" Margin="0,0,59,0"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Canvas>
+        <Grid Width="800" Height="434">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="120*"/>
+                <RowDefinition Height="97*"/>
+            </Grid.RowDefinitions>
+            <Border Height="434" VerticalAlignment="Center" Background="#f7e2ab" Grid.RowSpan="2"/>
+            <Border Height="414" VerticalAlignment="Center" CornerRadius="20 20 20 20" Background="#F5E8C7" Margin="30,10" Grid.RowSpan="2"/>
+
+            <!--<Image Source="D:\Kuliah\Semester 4\Bengkel Aplikasi Desktop\CafeRumbai\Logo-cafe-rumbai.png" Stretch="Fill" Margin="415,30,-52,160" RenderTransformOrigin="0.434,0.448" Grid.RowSpan="2" />-->
+
+            <TextBlock Text="Pemesanan" Foreground="#6F4C5B" TextAlignment="Center" FontSize="30" FontWeight="Bold" FontFamily="Arial Rounded MT Bold" Margin="17,23,547,181.4"/>
+            <Border Height="33" VerticalAlignment="Top" CornerRadius="20 20 0 0" Background="#6F4C5B" Margin="73,94,555,0"/>
+            <TextBlock Text="Minuman" Foreground="#fff" TextAlignment="Center" FontSize="24" FontWeight="Bold" FontFamily="Arial Rounded MT Bold" Margin="98,96,580,108.4"/>
+            <ComboBox x:Name="listminuman" Margin="73,127,555,85.4" IsSynchronizedWithCurrentItem="True"/>
+
+            <Border Height="34" VerticalAlignment="Top" CornerRadius="20 20 0 0" Background="#6F4C5B" Margin="73,184,555,0"/>
+            <TextBlock Text="Ukuran" Foreground="#fff" TextAlignment="Center" FontSize="24" FontWeight="Bold" FontFamily="Arial Rounded MT Bold" Margin="98,190,580,14.4"/>
+            <ComboBox x:Name="listukuran" IsSynchronizedWithCurrentItem="True" Margin="73,218,555,188" Grid.RowSpan="2"/>
+
+            <Border Height="33" VerticalAlignment="Top" CornerRadius="20 20 0 0" Background="#6F4C5B" Margin="73,41.6,555,0" Grid.Row="1"/>
+            <TextBlock Text="Jumlah" Foreground="#fff" TextAlignment="Center" FontSize="24" FontWeight="Bold" FontFamily="Arial Rounded MT Bold" Margin="41,43.6,523,114" Grid.Row="1"/>
+            <TextBox x:Name="txtJumlah" FontSize="15" Margin="73,74.6,555,89" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsReadOnly="True"  TextChanged="txtJumlah_TextChanged" Grid.Row="1"/>
+            <Button x:Name="kurang" FontSize="10" Content="▼" Click="kurang_Click" Margin="222,89.6,556,89" Grid.Row="1"/>
+            <Button x:Name="tambah" FontSize="10" Content="▲" Click="tambah_Click" Margin="222,74.6,556,104" Grid.Row="1"/>
+
+            <Button x:Name="konfirm" Content="Tambah" Margin="114,119,600,41.6" FontSize="15" Click="Button_Click" Grid.Row="1">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <Border Height="154" VerticalAlignment="Top" CornerRadius="20 20 20 20" Background="#6F4C5B" Margin="275,68,285,0"/>
+            <TextBlock Text="Topping" Foreground="#fff" TextAlignment="Center" FontSize="24" FontWeight="Bold" FontFamily="Arial Rounded MT Bold" Margin="309,70,319,134.4"/>
+            <Border Height="118" VerticalAlignment="Top" CornerRadius="0 0 20 20" Background="#EFEFEF" Margin="275,104,285,0"/>
+
+            <Grid Grid.RowSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <ListBox Name="listTopping" Margin="18.8,23.4,26.6,-73.2" Grid.Column="1" Grid.Row="3" >
+                    <CheckBox x:Name="Cincau" Content="Cincau (Rp.2000)"/>
+                    <CheckBox x:Name="Oreo" Grid.Column="1" Content="Oreo (Rp.3000)"/>
+                    <CheckBox x:Name="Meses" Grid.Column="2" Content="Meses (Rp.2000)"/>
+                    <CheckBox x:Name="Pearl" Grid.Row="1" Content="Pearl (Rp.3000)"/>
+                    <CheckBox x:Name="Caramel" Grid.Column="1" Grid.Row="1" Content="Caramel (Rp.3000)"/>
+                    <CheckBox x:Name="ChocoChips" Grid.Column="2" Grid.Row="1" Content="ChocoChips (Rp.3000)"/>
+                    <CheckBox x:Name="WhipCream" Grid.Row="2" Content="WhipCream (Rp.2000)"/>
+                    <CheckBox x:Name="Coklat" Grid.Column="1" Grid.Row="2" Content="Coklat (Rp.2000)"/>
+                    <CheckBox x:Name="Jelly" Grid.Column="2" Grid.Row="2" Content="Jelly (Rp.2000)"/>
+                </ListBox>
+            </Grid>
+
+            <Border Height="127" VerticalAlignment="Top" CornerRadius="20 20 20 20" Background="#6F4C5B" Margin="399,0.6,285,0" Grid.Row="1"/>
+            <TextBlock Text="Es" Foreground="#fff" TextAlignment="Center" FontSize="24" FontWeight="Bold" FontFamily="Arial Rounded MT Bold" Margin="418,4.6,304,160" Grid.Row="1"/>
+            <Border Height="91" VerticalAlignment="Top" CornerRadius="0 0 20 20" Background="#EFEFEF" Margin="399,36.6,285,0" Grid.Row="1"/>
+            <RadioButton GroupName="es" Foreground="#000000" Height="20" FontSize="15" FontFamily="Arial Rounded MT Bold" Margin="418,46.6,296,127" Grid.Row="1">Sedikit</RadioButton>
+            <RadioButton GroupName="es" Foreground="#000000" Height="20" FontSize="15" FontFamily="Arial Rounded MT Bold" Margin="418,91.6,296,82" Grid.Row="1">Banyak</RadioButton>
+            <RadioButton GroupName="es" Foreground="#000000" Height="20" FontSize="15" FontFamily="Arial Rounded MT Bold" Margin="418,68.6,296,105" IsChecked="True" Grid.Row="1">Normal</RadioButton>
+
+            <Border Height="127" VerticalAlignment="Top" CornerRadius="20 20 20 20" Background="#6F4C5B" Margin="275,0.6,409,0" Grid.Row="1"/>
+            <TextBlock Text="Gula" Foreground="#fff" TextAlignment="Center" FontSize="24" FontWeight="Bold" FontFamily="Arial Rounded MT Bold" Margin="294,4.6,428,160" Grid.Row="1"/>
+            <Border Height="91" VerticalAlignment="Top" CornerRadius="0 0 20 20" Background="#EFEFEF" Margin="275,36.6,409,0" Grid.Row="1"/>
+            <RadioButton GroupName="gula" Foreground="#000000" Height="20" FontSize="15" FontFamily="Arial Rounded MT Bold" Margin="290,46.6,424,127" Grid.Row="1">Sedikit</RadioButton>
+            <RadioButton GroupName="gula" Foreground="#000000" Height="20" FontSize="15" FontFamily="Arial Rounded MT Bold" Margin="290,91.6,424,82" Grid.Row="1">Banyak</RadioButton>
+            <RadioButton GroupName="gula" Foreground="#000000" Height="20" FontSize="15" FontFamily="Arial Rounded MT Bold" Margin="290,68.6,424,105" IsChecked="True" Grid.Row="1">Normal</RadioButton>
+
+            <Border Height="151" VerticalAlignment="Top" CornerRadius="20 20 20 20" Background="#6F4C5B" Margin="540,67,38,0"/>
+            <TextBlock Text="Keranjang" Foreground="#fff" TextAlignment="Center" FontSize="24" FontWeight="Bold" FontFamily="Arial Rounded MT Bold" Margin="571,70,69,135"/>
+            <Border Height="116" VerticalAlignment="Top" CornerRadius="0 0 20 20" Background="#EFEFEF" Margin="540,102,38,0"/>
+
+            <DataGrid x:Name="tabelKeranjang" Background="Transparent" HeadersVisibility="Column" AutoGenerateColumns="False" CanUserAddRows="False"
+                          VerticalGridLinesBrush="Transparent" HorizontalGridLinesBrush="WhiteSmoke"
+                          BorderThickness="0" ItemsSource="{Binding GridModelList}" Margin="540,102,38,40">
+                <DataGrid.ColumnHeaderStyle>
+                    <Style TargetType="DataGridColumnHeader">
+                    </Style>
+                </DataGrid.ColumnHeaderStyle>
+
+                <DataGrid.RowStyle>
+                    <Style TargetType="DataGridRow">
+                        <Setter Property="Height" Value="40"/>
+                        <Setter Property="Foreground" Value="#959595"/>
+                        <Setter Property="HorizontalAlignment" Value="Center"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    </Style>
+                </DataGrid.RowStyle>
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Nama minuman" Binding="{Binding namaMinuman}" Width="*"/>
+                    <DataGridTextColumn Header="Harga minuman" Binding="{Binding hargaMinuman}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <Border Height="33" VerticalAlignment="Top" CornerRadius="20 20 0 0" Background="#6F4C5B" Margin="556,43,55,0" Grid.Row="1"/>
+            <TextBlock Text="Total Harga" Foreground="#fff" TextAlignment="Center" FontSize="20" FontWeight="Bold" FontFamily="Arial Rounded MT Bold" Margin="572,47,67,117.6" Grid.Row="1"/>
+            <TextBox x:Name="txtTotals" FontSize="15" Margin="556,76,55,87.6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsReadOnly="True" Text="{Binding Path=ItemName, UpdateSourceTrigger=Explicit}" Grid.Row="1"/>
+
+            <TextBox x:Name="txtTotal" FontSize="15" Margin="556,76,55,87.6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsReadOnly="True" Text="{Binding Path=ItemName, UpdateSourceTrigger=Explicit}" Grid.Row="1"/>
+            
+
+            <Button x:Name="btnBatal" Content="Batal" Margin="556,230,158,170.6" FontSize="15" Click="btnBatal_Click" Grid.RowSpan="2">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <Button x:Name="btnPesan" Content="Pesan" Margin="659,230,55,170.6" FontSize="15" Click="btnPesan_Click" Grid.RowSpan="2">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <Button x:Name="btnSelesai" Content="Selesai" Margin="608,119,106,41.6" FontSize="15" Click="btnSelesai_Click" Grid.Row="1">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>     </Grid>
+    </Canvas>
+</Window>

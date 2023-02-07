@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CafeRumbaiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="keranjang">
+    <Key>
+      <PropertyRef Name="IdKeranjang" />
+    </Key>
+    <Property Name="IdKeranjang" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdMinuman" Type="Int32" />
+    <Property Name="namaMinuman" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ukuranMinuman" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="topping" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="jumlahMinuman" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="hargaMinuman" Type="Int32" />
+    <NavigationProperty Name="minuman" Relationship="Self.FK_keranjang_ToMinuman" FromRole="keranjang" ToRole="minuman" />
+  </EntityType>
+  <EntityType Name="minuman">
+    <Key>
+      <PropertyRef Name="IdMinuman" />
+    </Key>
+    <Property Name="IdMinuman" Type="Int32" Nullable="false" />
+    <Property Name="NamaMinuman" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HargaMinuman" Type="Int32" />
+    <NavigationProperty Name="keranjangs" Relationship="Self.FK_keranjang_ToMinuman" FromRole="minuman" ToRole="keranjang" />
+  </EntityType>
+  <EntityType Name="tblLogin">
+    <Key>
+      <PropertyRef Name="IdUser" />
+    </Key>
+    <Property Name="IdUser" Type="Int32" Nullable="false" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ukuran">
+    <Key>
+      <PropertyRef Name="IdUkuran" />
+    </Key>
+    <Property Name="IdUkuran" Type="Int32" Nullable="false" />
+    <Property Name="Ukuran1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HargaUkuran" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_keranjang_ToMinuman">
+    <End Role="minuman" Type="Self.minuman" Multiplicity="0..1" />
+    <End Role="keranjang" Type="Self.keranjang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="minuman">
+        <PropertyRef Name="IdMinuman" />
+      </Principal>
+      <Dependent Role="keranjang">
+        <PropertyRef Name="IdMinuman" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CafeRumbaiEntities4" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="keranjangs" EntityType="Self.keranjang" />
+    <EntitySet Name="minumen" EntityType="Self.minuman" />
+    <EntitySet Name="tblLogins" EntityType="Self.tblLogin" />
+    <EntitySet Name="ukurans" EntityType="Self.ukuran" />
+    <AssociationSet Name="FK_keranjang_ToMinuman" Association="Self.FK_keranjang_ToMinuman">
+      <End Role="minuman" EntitySet="minumen" />
+      <End Role="keranjang" EntitySet="keranjangs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
